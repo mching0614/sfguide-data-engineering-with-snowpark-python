@@ -32,8 +32,17 @@ def merge_order_updates(session):
 
     # TODO: Is the if clause supposed to be based on "META_UPDATED_AT"?
     cols_to_update = {c: source[c] for c in source.schema.names if "METADATA" not in c}
+    print(cols_to_update)
+    print("\n")
+    print("\n")
+    print("\n")
     metadata_col_to_update = {"META_UPDATED_AT": F.current_timestamp()}
+    print(metadata_col_to_update)
+    print("\n")
+    print("\n")
+    print("\n")
     updates = {**cols_to_update, **metadata_col_to_update}
+    print(updates)
 
     # merge into DIM_CUSTOMER
     target.merge(source, target['ORDER_DETAIL_ID'] == source['ORDER_DETAIL_ID'], \
